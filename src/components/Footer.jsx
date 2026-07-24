@@ -81,7 +81,7 @@ export default function Footer({ setActiveTab }) {
 
             <div className="footer-socials" aria-label="Social media links">
               <a
-                href="https://github.com/intsaar-amjad"
+                href="https://github.com/intsaaramjad-max"
                 target="_blank"
                 rel="noopener"
                 className="social-icon"

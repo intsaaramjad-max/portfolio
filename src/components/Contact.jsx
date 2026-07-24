@@ -191,7 +191,7 @@ export default function Contact() {
                   <a
                     href="https://linkedin.com/in/intsaar-amjad"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     className="contact-value"
                   >
                     linkedin.com/in/intsaar-amjad
@@ -216,12 +216,12 @@ export default function Contact() {
                 <div>
                   <span className="contact-label">GitHub</span>
                   <a
-                    href="https://github.com/intsaar-amjad"
+                    href="https://github.com/intsaaramjad-max"
                     target="_blank"
                     rel="noopener"
                     className="contact-value"
                   >
-                    github.com/intsaar-amjad
+                    github.com/intsaaramjad-max
                   </a>
                 </div>
               </li>
