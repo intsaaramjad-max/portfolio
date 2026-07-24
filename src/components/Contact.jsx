@@ -191,7 +191,7 @@ export default function Contact() {
                   <a
                     href="https://linkedin.com/in/intsaar-amjad"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                     className="contact-value"
                   >
                     linkedin.com/in/intsaar-amjad
@@ -218,7 +218,7 @@ export default function Contact() {
                   <a
                     href="https://github.com/intsaar-amjad"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                     className="contact-value"
                   >
                     github.com/intsaar-amjad

@@ -83,7 +83,7 @@ export default function Footer({ setActiveTab }) {
               <a
                 href="https://github.com/intsaar-amjad"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="social-icon"
                 aria-label="GitHub Profile"
               >
@@ -94,7 +94,7 @@ export default function Footer({ setActiveTab }) {
               <a
                 href="https://linkedin.com/in/intsaar-amjad"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="social-icon"
                 aria-label="LinkedIn Profile"
               >
