@@ -1,4 +1,37 @@
+import { useEffect, useState } from 'react';
+
+const TYPING_WORDS = ['full stack apps', 'clean APIs', 'React UIs', 'delightful products'];
+
 export default function Hero({ setActiveTab }) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [typedWord, setTypedWord] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = TYPING_WORDS[wordIndex];
+    const hasFinishedTyping = typedWord === currentWord && !isDeleting;
+    const hasFinishedDeleting = typedWord === '' && isDeleting;
+    const delay = hasFinishedTyping ? 1400 : hasFinishedDeleting ? 300 : isDeleting ? 40 : 70;
+
+    const timer = window.setTimeout(() => {
+      if (hasFinishedTyping) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (hasFinishedDeleting) {
+        setIsDeleting(false);
+        setWordIndex((currentIndex) => (currentIndex + 1) % TYPING_WORDS.length);
+        return;
+      }
+
+      const nextLength = typedWord.length + (isDeleting ? -1 : 1);
+      setTypedWord(currentWord.slice(0, nextLength));
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [isDeleting, typedWord, wordIndex]);
+
   const handleCtaClick = (e, targetId) => {
     e.preventDefault();
     setActiveTab(targetId);
@@ -11,7 +44,8 @@ export default function Hero({ setActiveTab }) {
         <div className="hero-content reveal-on-scroll">
           <span className="eyebrow">Full Stack Developer</span>
           <h1 className="hero-title">
-            Hi, I'm <span className="highlight">Intsaar Amjad</span>
+            Hi, I'm <span className="highlight">Intsaar Amjad</span><br />
+            I build <span className="typed-word">{typedWord}</span><span className="type-cursor" aria-hidden="true">&nbsp;</span>
           </h1>
           <p className="hero-subtitle">
             I build clean, accessible, and modern digital products that turn ideas into smooth user
