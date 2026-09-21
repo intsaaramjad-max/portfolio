@@ -12,23 +12,28 @@ import ScrollToTop from './components/ScrollToTop';
 import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
-  // Initialize theme from localStorage or system preference
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem('portfolio-theme');
+    return saved || 'sunset';
+  });
+
+  const [mode, setMode] = useState(() => {
+    const saved = localStorage.getItem('portfolio-mode');
     if (saved) return saved;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return prefersDark ? 'dark' : 'light';
   });
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Sync theme with HTML data-theme attribute and save to localStorage
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-mode', mode);
+    localStorage.setItem('portfolio-theme', theme);
+    localStorage.setItem('portfolio-mode', mode);
+  }, [theme, mode]);
 
   // Manage the active tab / view state
   const [activeTab, setActiveTab] = useState('hero');
@@ -70,6 +75,8 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         theme={theme}
+        setTheme={setTheme}
+        mode={mode}
         toggleTheme={toggleTheme}
       />
 
